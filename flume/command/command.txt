@@ -1,0 +1,21 @@
+bin/flume-ng agent --conf conf --conf-file conf/logagent.properties --name LogAgent -Dflume.root.logger=DEBUG,console
+
+LogAgent.sources = mysource
+LogAgent.sinks = mysink
+LogAgent.channels = mychannel
+
+LogAgent.sources.mysource.type = spooldir
+LogAgent.sources.mysource.channels = mychannel
+LogAgent.sources.mysource.spoolDir = /home/hadoopuser/apache-flume-1.7.0-bin/testdata
+
+LogAgent.sinks.mysink.type = hdfs
+LogAgent.sinks.mysink.channel = mychannel
+LogAgent.sinks.mysink.hdfs.path = hdfs://hadoopnode:9000/flumedata/
+LogAgent.sinks.mysink.hdfs.batchSize = 1000
+LogAgent.sinks.mysink.hdfs.rollSize = 0
+LogAgent.sinks.mysink.hdfs.rollCount = 10000
+LogAgent.sinks.mysink.hdfs.useLocalTimeStamp = true
+
+LogAgent.channels.mychannel.type = memory
+LogAgent.channels.mychannel.capacity = 1000
+LogAgent.channels.mychannel.transactionCapacity = 1000

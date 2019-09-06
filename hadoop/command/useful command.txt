@@ -1,0 +1,15 @@
+stop-all.sh
+start-all.sh
+
+hdfs dfs -ls /tmp/
+
+hdfs dfs -put README.txt /tmp/
+
+hdfs dfs -cat /tmp/README.txt
+
+hdfs dfs -du /tmp/README.txt
+
+hdfs dfs -du -h /tmp/README.txt
+
+hdfs fsck /tmp/ -files -blocks -racks -locations
+
