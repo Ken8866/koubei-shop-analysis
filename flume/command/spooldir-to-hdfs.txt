@@ -7,6 +7,8 @@ LogAgent.channels = mychannel
 LogAgent.sources.mysource.type = spooldir
 LogAgent.sources.mysource.channels = mychannel
 LogAgent.sources.mysource.spoolDir = /home/hadoopuser/apache-flume-1.7.0-bin/testdata
+LogAgent.sources.mysource.fileHeader=true
+LogAgent.sources.mysource.deletePolicy=immediate
 
 LogAgent.sinks.mysink.type = hdfs
 LogAgent.sinks.mysink.channel = mychannel

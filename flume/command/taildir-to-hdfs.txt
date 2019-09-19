@@ -1,0 +1,24 @@
+LogAgent.sources=src1
+LogAgent.sinks=sink1
+LogAgent.channels=ch1
+
+LogAgent.sources.src1.type=tailDir
+LogAgent.sources.src1.channels=ch1
+LogAgent.sources.src1.positionFile=/home/hadoopuser/apache-flume-1.7.0-bin/tmp/taildir_position.json
+LogAgent.sources.src1.filegroups=f1 f2
+LogAgent.sources.src1.filegroups.f1=/home/hadoopuser/apache-flume-1.7.0-bin/testdata/gf1.log
+LogAgent.sources.src1.filegroups.f2=/home/hadoopuser/apache-flume-1.7.0-bin/testdata/gf2.log
+LogAgent.sources.src1.headers.f1.headerKey1=f1v1
+LogAgent.sources.src1.headers.f1.headerKey2=f1v2
+LogAgent.sources.src1.headers.f2.headerKey1=f2v1
+LogAgent.sources.src1.fileHeader=true
+
+LogAgent.sinks.sink1.type=hdfs
+LogAgent.sinks.sink1.channel=ch1
+LogAgent.sinks.sink1.hdfs.path=hdfs://hadoopnode:9000/flumedata/
+LogAgent.sinks.sink1.hdfs.batchsize=1000
+
+LogAgent.channels.ch1.type=memory
+LogAgent.channels.ch1.capacity=1000
+LogAgent.channels.ch1.transactionCapacity=1000
+
